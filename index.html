@@ -59,6 +59,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Motion Controller For Natural and Robust Humanoid Locomotion using Reinforcement Learning</h1>
+          <h1 class="title is-3 publication-title">Additional Detailed Results</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://github.com/Dzone077">Duarte Faria dos Santos</a></span>
@@ -147,24 +148,12 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">First Objective: Legged Locomotion</h2>
-
         <div class="content has-text-justified">
           <p>
-            We introduce here the additional results and details that could not fit in the main report, and are referenced throughout the document.
+            In this section, additional <b>implementation details</b> and quantitative results that were referenced throughout the main report are presented, including the network architecture, reward design, and training curves for both retracted-arms and rested-arms configurations. These results complement the main report by illustrating how the learned policies evolve and how different terms in the reward function shape the final behavior.
           </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
+        </div>
+
         </div>
       </div>
     </div>
@@ -262,12 +251,12 @@
     <!-- Row 1 -->
     <div class="columns">
       <div class="column has-text-centered">
-        <img src="./static/images/avg_reward_hu3.svg"
+        <img src="./static/images/avg_reward_hd.svg"
              alt="Average Reward During Training"
              style="max-width:100%; height:auto;">
       </div>
       <div class="column has-text-centered">
-        <img src="./static/images/avg_return_hu3.svg"
+        <img src="./static/images/avg_return_hd.svg"
              alt="Average Return During Evaluation"
              style="max-width:100%; height:auto;">
       </div>
@@ -280,12 +269,12 @@
     <!-- Row 2 -->
     <div class="columns">
       <div class="column has-text-centered">
-        <img src="./static/images/actor_loss_hu.svg"
+        <img src="./static/images/actor_loss_hd.svg"
              alt="Actor Network Loss During Training"
              style="max-width:100%; height:auto;">
       </div>
       <div class="column has-text-centered">
-        <img src="./static/images/q_loss_hu4.svg"
+        <img src="./static/images/q_loss_hd.svg"
              alt="Q-Function Loss During Training"
              style="max-width:100%; height:auto;">
       </div>
@@ -299,6 +288,24 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-bottom:2.5rem">Joint Angle Limits in Radians for Upper and Lower Body</h2>
+      </div>
+    </div>
+
+
+
+      <div class="column has-text-centered">
+        <img src="./static/images/joint_table.png"
+             alt="Reward table"
+             style="max-width:100%; height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
