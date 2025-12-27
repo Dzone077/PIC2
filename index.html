@@ -381,93 +381,15 @@
       </div>
     </div>
 
-    <!-- Detailed Structure -->
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h3 class="title is-4">Detailed Structure</h3>
-
-        <table style="border-collapse:collapse; width:100%; border:1px solid #000;">
-          <caption style="caption-side:top; font-weight:bold; margin-bottom:4px;">
-            Network and Training Parameters for Both Legged Locomotion Training Policies.
-          </caption>
-          <tr>
-            <th style="border:1px solid #000; padding:4px;">Network Parameters</th>
-            <th style="border:1px solid #000; padding:4px;">Value</th>
-          </tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Actor Number of Hidden Layers</td><td style="border:1px solid #000; padding:4px;">512</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Critic Number of Hidden Layers</td><td style="border:1px solid #000; padding:4px;">1024</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Actor Learning Rate</td><td style="border:1px solid #000; padding:4px;">\(3 \times 10^{-4}\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Critic Learning Rate</td><td style="border:1px solid #000; padding:4px;">\(3 \times 10^{-4}\)</td></tr>
-
-          <tr>
-            <th style="border:1px solid #000; padding:4px;" colspan="2">Training Parameters</th>
-          </tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Number of Environments</td><td style="border:1px solid #000; padding:4px;">1024</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Number of Iterations</td><td style="border:1px solid #000; padding:4px;">1 000 000</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Buffer Size</td><td style="border:1px solid #000; padding:4px;">8192</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Batch Size</td><td style="border:1px solid #000; padding:4px;">32768</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Number of Evaluation Environments</td><td style="border:1px solid #000; padding:4px;">1024</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Discount Factor \((\gamma)\)</td><td style="border:1px solid #000; padding:4px;">0.97</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Velocity Command Limit \(x\) and \(\omega\)</td><td style="border:1px solid #000; padding:4px;">\([-1.0, 1.0]\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Velocity Command Limit \(y\)</td><td style="border:1px solid #000; padding:4px;">\([-0.8, 0.8]\)</td></tr>
-
-          <tr>
-            <th style="border:1px solid #000; padding:4px;" colspan="2">Domain Randomization</th>
-          </tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Floor Friction</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(0.2, 0.6)\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Link Mass</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(0.98, 1.02)\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Torso Mass</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(-1.0, 1.0)\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Initial Joint Position Jitter</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(-0.05, 0.05)\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Joint Stiffness</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(0.7, 1.3)\)</td></tr>
-          <tr><td style="border:1px solid #000; padding:4px;">Joint Damping</td><td style="border:1px solid #000; padding:4px;">\(\mathbf{u} \sim \mathcal{U}(0.7, 1.3)\)</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- Reward Structure -->
-    <div class="columns is-centered" style="margin-top:2rem;">
-      <div class="column is-full-width">
-        <h3 class="title is-4">Reward Structure</h3>
-
-        <table style="border-collapse:collapse; width:100%; border:1px solid #000;">
-          <caption style="caption-side:top; font-weight:bold; margin-bottom:4px;">
-            Utilized Reward Structure for Both Legged Locomotion Training Policies.
-          </caption>
-          <tr>
-            <th style="border:1px solid #000; padding:4px;">Components</th>
-            <th style="border:1px solid #000; padding:4px;">Equations</th>
-            <th style="border:1px solid #000; padding:4px;">Weights</th>
-          </tr>
-
-          <tr><td style="border:1px solid #000; padding:4px;">Survival</td><td style="border:1px solid #000; padding:4px;">1</td><td style="border:1px solid #000; padding:4px;">0.25</td></tr>
-          <tr><td>Velocity Tracking \(x\)</td><td>\(\exp\big(-(v_x^{\mathrm{cmd}}-v_x)^2/\sigma\big)\)</td><td>1.0</td></tr>
-          <tr><td>Velocity Tracking \(y\)</td><td>\(\exp\big(-(v_y^{\mathrm{cmd}}-v_y)^2/\sigma\big)\)</td><td>1.0</td></tr>
-          <tr><td>Velocity Tracking \(\omega\)</td><td>\(\exp\big(-(\omega_z^{\mathrm{cmd}}-\omega_z)^2/\sigma\big)\)</td><td>2.0</td></tr>
-          <tr><td>Base Height</td><td>\((h-h^{\mathrm{target}})^2\)</td><td>-20.0</td></tr>
-          <tr><td>Orientation</td><td>\(\lVert g_{xy} \rVert^2\)</td><td>-5.0</td></tr>
-
-          <tr><td>Torque</td><td>\(\lVert \tau \rVert^2\)</td><td>-1×10\(^{-4}\)</td></tr>
-          <tr><td>Torque Tiredness</td><td>\(\lVert \tau / \tau_{\max} \rVert^2\)</td><td>-0.5×10\(^{-2}\)</td></tr>
-          <tr><td>Power</td><td>\(\max(\tau\cdot\dot{q},0)\)</td><td>-1×10\(^{-4}\)</td></tr>
-          <tr><td>Linear Velocity \(z\)</td><td>\(v_z^2\)</td><td>-2.0</td></tr>
-          <tr><td>Angular Velocity \(xy\)</td><td>\(\lVert \omega_{xy} \rVert^2\)</td><td>-0.2</td></tr>
-          <tr><td>Joint Velocity</td><td>\(\lVert \dot{q} \rVert^2\)</td><td>-1×10\(^{-4}\)</td></tr>
-          <tr><td>Joint Acceleration</td><td>\(\lVert \ddot{q} \rVert^2\)</td><td>-1×10\(^{-7}\)</td></tr>
-          <tr><td>Base Acceleration</td><td>\(\lVert \dot{v} \rVert^2 + \lVert \dot{\omega} \rVert^2\)</td><td>-1×10\(^{-4}\)</td></tr>
-          <tr><td>Action Rate</td><td>\(\lVert a_t-a_{t-1} \rVert^2\)</td><td>-0.5</td></tr>
-          <tr><td>Joint Position Limit</td><td>\(1_{q>q_{\max}} + 1_{q<q_{\min}}\)</td><td>-1.0</td></tr>
-          <tr><td>Collision</td><td>\(n_{\mathrm{collision}}\)</td><td>-10.0</td></tr>
-
-          <tr><td>Feet Swing</td><td>\(1_{\mathrm{feet\;swing}} \cdot 1_{\mathrm{swing\;period}}\)</td><td>3.0</td></tr>
-          <tr><td>Feet Slip</td><td>\(1_{\mathrm{feet\;stance}}\cdot \lVert v_{\mathrm{feet}}\rVert^2\)</td><td>-0.1</td></tr>
-          <tr><td>Feet Yaw</td><td>\(\lVert \psi_{\mathrm{feet}}-\psi_{\mathrm{base}}\rVert^2\)</td><td>-0.1</td></tr>
-          <tr><td>Feet Roll</td><td>\(\lVert \phi_{\mathrm{feet}}\rVert^2\)</td><td>-1.0</td></tr>
-          <tr><td>Feet Distance</td><td>\(\max(d_{\mathrm{ref}}-d_{\mathrm{feet}},0)\)</td><td>-10.0</td></tr>
-        </table>
+      <div class="column is-fullwidth has-text-centered">
+        <img src="./static/images/network.png"
+             alt="Network, training, and reward tables for legged locomotion policies"
+             style="max-width:100%; height:auto;">
       </div>
     </div>
   </div>
-</
+</section>
 
 
 
